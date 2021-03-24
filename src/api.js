@@ -1,6 +1,6 @@
 export const getBitcoinArticles = async () => {
   const response = await fetch(
-    `https://newsapi.org/v2/everything?q=bitcoin&sortBy=publishedAt&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`
+    `https://gnews.io/api/v4/search?q=bitcoin&token=${process.env.REACT_APP_NEWS_API_KEY}`
   );
   const json = await response.json();
   return json;
@@ -8,7 +8,7 @@ export const getBitcoinArticles = async () => {
 
 export const getArticles = async topic => {
   const response = await fetch(
-    `https://newsapi.org/v2/everything?q=${topic}&sortBy=publishedAt&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`
+    `https://gnews.io/api/v4/search?q=${topic}&token=${process.env.REACT_APP_NEWS_API_KEY}`
   );
   const json = await response.json();
   return json;

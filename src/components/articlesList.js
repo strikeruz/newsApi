@@ -20,13 +20,13 @@ const ArticleItem = props => {
           </List.Description>
           <List bulleted horizontal>
             <List.Item>
-              <a href={article.url}>{article.source.name}</a>
+              <a href={article.url} rel="noopener noreferrer" target="_blank">{article.source.name}</a>
             </List.Item>
             <List.Item>{article.publishedAt.split("T")[0]}</List.Item>
           </List>
         </Grid.Column>
         <Grid.Column width={5}>
-          <Image src={article.urlToImage} />
+          <Image src={article.image} />
         </Grid.Column>
       </Grid>
     </List.Item>

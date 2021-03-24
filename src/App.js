@@ -21,7 +21,7 @@ class App extends React.Component {
       this.setState({
         articles: response.articles,
         searchTopic: topic,
-        totalResults: response.totalResults
+        totalResults: response.totalArticles
       });
     } catch (error) {
       this.setState({ apiError: "Could not find any articles" });
@@ -41,22 +41,19 @@ class App extends React.Component {
     return (
       <Container>
         <Header as="h2" style={{ textAlign: "center", margin: 20 }}>
-          Search for a topic
+          Поиск новостей по теме (пример: Биткоин)
         </Header>
         <SearchBar searchForTopic={this.searchForTopic} />
-        <p style={{ textAlign: "center" }}>
-          Powered by <a href="https://newsapi.org/">NewsAPI.org</a>
-        </p>
         {loading && (
-          <p style={{ textAlign: "center" }}>Searching for articles...</p>
+          <p style={{ textAlign: "center" }}>Ищем статьи ...</p>
         )}
         {articles && articles.length > 0 && (
           <Header as="h4" style={{ textAlign: "center", margin: 20 }}>
-            Found {totalResults} articles on "{searchTopic}"
+            Найдено {totalResults} статьи по запросу "{searchTopic}"
           </Header>
         )}
         {articles && articles.length > 0 && <ArticleList articles={articles} />}
-        {apiError && <p>Could not fetch any articles. Please try again.</p>}
+        {apiError && <p>Не удалось получить статьи. Пожалуйста, попробуйте еще раз.</p>}
       </Container>
     );
   }
