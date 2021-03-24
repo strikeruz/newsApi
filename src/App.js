@@ -17,6 +17,7 @@ class App extends React.Component {
     try {
       this.setState({ loading: true });
       const response = await getArticles(topic);
+
       this.setState({
         articles: response.articles,
         searchTopic: topic,
