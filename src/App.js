@@ -37,6 +37,7 @@ class App extends React.Component {
       searchTopic,
       totalResults
     } = this.state;
+
     return (
       <Container>
         <Header as="h2" style={{ textAlign: "center", margin: 20 }}>
@@ -49,12 +50,12 @@ class App extends React.Component {
         {loading && (
           <p style={{ textAlign: "center" }}>Searching for articles...</p>
         )}
-        {articles.length > 0 && (
+        {articles && articles.length > 0 && (
           <Header as="h4" style={{ textAlign: "center", margin: 20 }}>
             Found {totalResults} articles on "{searchTopic}"
           </Header>
         )}
-        {articles.length > 0 && <ArticleList articles={articles} />}
+        {articles && articles.length > 0 && <ArticleList articles={articles} />}
         {apiError && <p>Could not fetch any articles. Please try again.</p>}
       </Container>
     );
